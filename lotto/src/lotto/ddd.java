@@ -42,7 +42,7 @@ class MyActionListener implements ActionListener {
 			buttons[j].setText(lottoNum.get(j));
 			message += lottoNum.get(j) + "       ";
 		}
-		
+//		.
 		textArea.append(message + "\n");
 		textArea.setCaretPosition(textArea.getDocument().getLength());
 	}

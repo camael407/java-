@@ -42,7 +42,7 @@ public class LotteryGame extends JFrame {
 		add(textPanel, BorderLayout.CENTER);
 		add(northPanel, BorderLayout.NORTH);
 		add(southPanel, BorderLayout.SOUTH);
-		
+//		s
 	}
 	
 	class MyActionListener implements ActionListener {

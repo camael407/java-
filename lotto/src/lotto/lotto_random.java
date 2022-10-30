@@ -46,6 +46,7 @@ public class lotto_random extends JFrame {
     		numbutBtn[i] = new JButton(" ");
 			numPane.add(numbutBtn[i]);
 		}
+//    	3
     	
 		JButton btn = new JButton("로또 번호 생성하기");
 		btn.addActionListener(new Lottoset(numbutBtn, text));
