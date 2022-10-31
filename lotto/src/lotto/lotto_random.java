@@ -112,7 +112,7 @@ public class lotto_random extends JFrame {
 		}
 
 
-
+...
 		public void actionPerformed(ActionEvent e) {
 			HashSet<String> set = new HashSet<String>();
 			ArrayList<String> lottoNum = new ArrayList<String>(set);
