@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 
 import javax.imageio.ImageIO;
@@ -125,11 +126,13 @@ public class lotto_random extends JFrame {
 				} else {
 					element = String.valueOf(choose);
 				}
+				Collections.sort(lottoNum);
 				if(!lottoNum.contains(element)) {
 				lottoNum.add(element);
 				i++;
 				}
-			}
+
+		    } 
 
 			String message = "                                   ";
 
