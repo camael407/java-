@@ -137,8 +137,8 @@ public class lotto_random extends JFrame {
 				buttons[j].setText(lottoNum.get(j));
 				message += lottoNum.get(j) + "       ";
 			}
-			//textpane에서 append역할하는 매서드는?
-			//없으면 textarea에서 중앙정렬 or 자동정렬 하는 매서드는?
+			textpane에서 append역할하는 매서드는?
+			없으면 textarea에서 중앙정렬 or 자동정렬 하는 매서드는?
 			textArea.in(message + "\n");
 			textArea.setCaretPosition(textArea.getDocument().getLength());
 		}
