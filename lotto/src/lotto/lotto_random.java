@@ -42,7 +42,7 @@ public class lotto_random extends JFrame {
 
 	public void makeElements() throws IOException {
 
-		BufferedImage btimg = ImageIO.read(new File("img/icon.png"));
+		BufferedImage btimg = ImageIO.read(new File("img/icon1.png"));
 		Image afimg = btimg.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
 		JPanel northPanel = new JPanel();
 		JPanel southPanel = new JPanel();
@@ -134,7 +134,7 @@ public class lotto_random extends JFrame {
 
 		    } 
 
-			String message = "                                   ";
+			String message = "                                  ";
 
 			for (int j = 0; j < buttons.length; j++) {
 				buttons[j].setText(lottoNum.get(j));
