@@ -44,6 +44,7 @@ public class lotto_random extends JFrame implements Runnable{
 		Image afimg = btimg.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
 		JPanel northPanel = new JPanel();
 		JPanel southPanel = new JPanel();
+		JPanel southPanel2 = new JPanel();
 
 		JTextArea text = new JTextArea();
 		JScrollPane textPanel = new JScrollPane(text);
@@ -72,7 +73,7 @@ public class lotto_random extends JFrame implements Runnable{
 //		clnbtn.setOpaque(false);
 //		clnbtn.addActionListener(new reset(numbutBtn, text));
 //		southPanel.add(clnbtn);
-ㅇㅇㅇㅇ
+
 		add(textPanel, BorderLayout.CENTER);
 		add(northPanel, BorderLayout.NORTH);
 		add(southPanel, BorderLayout.SOUTH);
