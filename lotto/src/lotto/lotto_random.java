@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-public class lotto_random extends JFrame {
+public class lotto_random extends JFrame implements Runnable{
 
 	/**
 	* 
@@ -34,7 +34,8 @@ public class lotto_random extends JFrame {
 		setSize(400, 300);
 		setVisible(true);
 		setLayout(new BorderLayout(0, 5));
-		makeElements();
+		System.out.println("1test");
+	
 	}
 
 	public void makeElements() throws IOException {
@@ -46,11 +47,12 @@ public class lotto_random extends JFrame {
 
 		JTextArea text = new JTextArea();
 		JScrollPane textPanel = new JScrollPane(text);
-
 		JLabel[] numbutBtn = new JLabel[6];
 		JPanel numPane = new JPanel();
 		numPane.setLayout(new GridLayout(1, 6, 10, 0));
 
+		
+		
 		for (int i = 0; i < numbutBtn.length; i++) {
 			numbutBtn[i] = new JLabel(new ImageIcon(afimg));
 			numPane.add(numbutBtn[i]);
@@ -59,15 +61,27 @@ public class lotto_random extends JFrame {
 			numbutBtn[i].setHorizontalTextPosition(JLabel.CENTER);
 		}
 		JButton btn = new JButton("로또 번호 생성하기");
+		btn.setFocusable(false);
+		btn.setOpaque(false);
 		btn.addActionListener(new Lottoset(numbutBtn, text));
 		northPanel.add(numPane);
 		southPanel.add(btn);
+		
+//		JButton clnbtn= new JButton("CLEAN");
+//		clnbtn.setFocusable(false);
+//		clnbtn.setOpaque(false);
+//		clnbtn.addActionListener(new reset(numbutBtn, text));
+//		southPanel.add(clnbtn);
 
 		add(textPanel, BorderLayout.CENTER);
 		add(northPanel, BorderLayout.NORTH);
 		add(southPanel, BorderLayout.SOUTH);
 
 	}
+	
+//	class reset implements ActionListener { 
+//		JLabel[]
+//	}
 
 	class Lottoset implements ActionListener {
 		JLabel[] buttons;
@@ -84,12 +98,12 @@ public class lotto_random extends JFrame {
 
 			int i = 0;
 			while (i < 6) {
-				Integer temp = (int) (Math.random() * 45 + 1);
+				Integer choose = (int) (Math.random() * 45 + 1);
 				String element;
-				if (temp < 10) {
-					element = "0" + String.valueOf(temp);
+				if (choose < 10) {
+					element = "0" + String.valueOf(choose);
 				} else {
-					element = String.valueOf(temp);
+					element = String.valueOf(choose);
 				}
 				lottoNum.add(element);
 				i++;
@@ -112,6 +126,20 @@ public class lotto_random extends JFrame {
 	public static void main(String[] args) throws IOException {
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		new lotto_random();
+		Thread t1 = new Thread(new lotto_random());
+		t1.start();
+	}
+
+	@Override
+	public void run() {
+		try {
+			makeElements();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+			
 	}
 
 }
