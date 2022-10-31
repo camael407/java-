@@ -19,6 +19,8 @@ public class lotto_random extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 7460776130748644032L;
+	
+	// 테스트 변경 커밋 확인 중 221031 0927
 
 	lotto_random() {
 		
