@@ -7,6 +7,8 @@ import java.awt.*;
 
 public class LotteryGame extends JFrame {
 	
+	
+	
 	LotteryGame() {
 
 		setTitle("로또 생성기");
