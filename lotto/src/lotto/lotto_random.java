@@ -19,8 +19,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
-public class lotto_random extends JFrame implements Runnable{
+public class lotto_random extends JFrame {
 
 	/**
 	* 
@@ -34,7 +35,8 @@ public class lotto_random extends JFrame implements Runnable{
 		setSize(400, 300);
 		setVisible(true);
 		setLayout(new BorderLayout(0, 5));
-		System.out.println("1test");
+//		System.out.println("1test");
+		makeElements();
 	
 	}
 
@@ -46,7 +48,7 @@ public class lotto_random extends JFrame implements Runnable{
 		JPanel southPanel = new JPanel();
 		
 
-		JTextArea text = new JTextArea();
+		JTextPane text = new JTextPane();
 		JScrollPane textPanel = new JScrollPane(text);
 		JLabel[] numbutBtn = new JLabel[6];
 		JPanel numPane = new JPanel();
@@ -68,30 +70,48 @@ public class lotto_random extends JFrame implements Runnable{
 		northPanel.add(numPane);
 		southPanel.add(btn);
 		
-//		JButton clnbtn= new JButton("CLEAN");
-//		clnbtn.setFocusable(false);
-//		clnbtn.setOpaque(false);
-//		clnbtn.addActionListener(new reset(numbutBtn, text));
-//		southPanel.add(clnbtn);
+		JButton clnbtn= new JButton("CLEAN");
+		clnbtn.setFocusable(false);
+		clnbtn.setOpaque(false);
+		clnbtn.addActionListener(new reset(numbutBtn, text));
+		southPanel.add(clnbtn);
 
 		add(textPanel, BorderLayout.CENTER);
 		add(northPanel, BorderLayout.NORTH);
 		add(southPanel, BorderLayout.SOUTH);
+		
+		
 
 	}
 	
-//	class reset implements ActionListener { 
-//		JLabel[]
-//	}
+	class reset implements ActionListener { 
+		JLabel[] clnbtn;
+		JTextPane clnfld;
+		public reset(JLabel[] clnbtn, JTextPane clnfld) {
+			this.clnbtn = clnbtn;
+			this.clnfld = clnfld;
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			for(int i = 0; i< 6; i++) {
+				clnbtn[i].setText("");
+			}
+			
+			clnfld.setText("");
+			clnfld.setCaretPosition(clnfld.getDocument().getLength());
+		}
+	}
 
 	class Lottoset implements ActionListener {
 		JLabel[] buttons;
-		JTextArea textArea;
+		JTextPane textArea;
 
-		public Lottoset(JLabel[] buttons, JTextArea textArea) {
+		public Lottoset(JLabel[] buttons, JTextPane textArea) {
 			this.buttons = buttons;
 			this.textArea = textArea;
 		}
+
+
 
 		public void actionPerformed(ActionEvent e) {
 			HashSet<String> set = new HashSet<String>();
@@ -117,8 +137,9 @@ public class lotto_random extends JFrame implements Runnable{
 				buttons[j].setText(lottoNum.get(j));
 				message += lottoNum.get(j) + "       ";
 			}
-
-			textArea.append(message + "\n");
+			//textpane에서 append역할하는 매서드는?
+			//없으면 textarea에서 중앙정렬 or 자동정렬 하는 매서드는?
+			textArea.in(message + "\n");
 			textArea.setCaretPosition(textArea.getDocument().getLength());
 		}
 
@@ -127,20 +148,9 @@ public class lotto_random extends JFrame implements Runnable{
 	public static void main(String[] args) throws IOException {
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		new lotto_random();
-		Thread t1 = new Thread(new lotto_random());
-		t1.start();
+
 	}
 
-	@Override
-	public void run() {
-		try {
-			makeElements();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-			
-	}
+
 
 }
