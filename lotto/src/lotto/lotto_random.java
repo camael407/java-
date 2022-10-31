@@ -31,6 +31,7 @@ public class lotto_random extends JFrame {
 	lotto_random() throws IOException {
 
 		setTitle("로또번호 랜덤 추출기 v.0.0.1");
+		//x표 눌러서 작동 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(400, 300);
 		setVisible(true);
@@ -98,7 +99,7 @@ public class lotto_random extends JFrame {
 			}
 			
 			clnfld.setText("");
-			clnfld.setCaretPosition(clnfld.getDocument().getLength());
+
 		}
 	}
 
@@ -142,12 +143,14 @@ public class lotto_random extends JFrame {
 			}
 
 			textArea.append(message + "\n");
+			//맨 아래로 스크롤 따라가기
 			textArea.setCaretPosition(textArea.getDocument().getLength());
 		}
 
 	}
 
 	public static void main(String[] args) throws IOException {
+		// 창위에 최소화 최대화 옵션표시
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		new lotto_random();
 
