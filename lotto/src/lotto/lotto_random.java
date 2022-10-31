@@ -72,7 +72,7 @@ public class lotto_random extends JFrame implements Runnable{
 //		clnbtn.setOpaque(false);
 //		clnbtn.addActionListener(new reset(numbutBtn, text));
 //		southPanel.add(clnbtn);
-3
+ㅇㅇㅇㅇ
 		add(textPanel, BorderLayout.CENTER);
 		add(northPanel, BorderLayout.NORTH);
 		add(southPanel, BorderLayout.SOUTH);
