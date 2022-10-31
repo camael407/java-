@@ -19,7 +19,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 
 public class lotto_random extends JFrame {
 
@@ -48,7 +47,7 @@ public class lotto_random extends JFrame {
 		JPanel southPanel = new JPanel();
 		
 
-		JTextPane text = new JTextPane();
+		JTextArea text = new JTextArea();
 		JScrollPane textPanel = new JScrollPane(text);
 		JLabel[] numbutBtn = new JLabel[6];
 		JPanel numPane = new JPanel();
@@ -70,7 +69,7 @@ public class lotto_random extends JFrame {
 		northPanel.add(numPane);
 		southPanel.add(btn);
 		
-		JButton clnbtn= new JButton("CLEAN");
+		JButton clnbtn= new JButton("CLEAR");
 		clnbtn.setFocusable(false);
 		clnbtn.setOpaque(false);
 		clnbtn.addActionListener(new reset(numbutBtn, text));
@@ -86,8 +85,8 @@ public class lotto_random extends JFrame {
 	
 	class reset implements ActionListener { 
 		JLabel[] clnbtn;
-		JTextPane clnfld;
-		public reset(JLabel[] clnbtn, JTextPane clnfld) {
+		JTextArea clnfld;
+		public reset(JLabel[] clnbtn, JTextArea clnfld) {
 			this.clnbtn = clnbtn;
 			this.clnfld = clnfld;
 		}
@@ -104,15 +103,15 @@ public class lotto_random extends JFrame {
 
 	class Lottoset implements ActionListener {
 		JLabel[] buttons;
-		JTextPane textArea;
+		JTextArea textArea;
 
-		public Lottoset(JLabel[] buttons, JTextPane textArea) {
+		public Lottoset(JLabel[] buttons, JTextArea textArea) {
 			this.buttons = buttons;
 			this.textArea = textArea;
 		}
 
 
-....
+
 		public void actionPerformed(ActionEvent e) {
 			HashSet<String> set = new HashSet<String>();
 			ArrayList<String> lottoNum = new ArrayList<String>(set);
@@ -126,9 +125,10 @@ public class lotto_random extends JFrame {
 				} else {
 					element = String.valueOf(choose);
 				}
+				if(!lottoNum.contains(element)) {
 				lottoNum.add(element);
 				i++;
-
+				}
 			}
 
 			String message = "                                   ";
@@ -137,9 +137,10 @@ public class lotto_random extends JFrame {
 				buttons[j].setText(lottoNum.get(j));
 				message += lottoNum.get(j) + "       ";
 			}
-			textpane에서 append역할하는 매서드는?
-			없으면 textarea에서 중앙정렬 or 자동정렬 하는 매서드는?
-			textArea.in(message + "\n");
+//			textpane에서 append역할하는 매서드는?
+//			없으면 textarea에서 중앙정렬 or 자동정렬 하는 매서드는?
+			textArea.append(message + "\n");
+			textArea.setColumns(6);
 			textArea.setCaretPosition(textArea.getDocument().getLength());
 		}
 
