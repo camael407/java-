@@ -142,7 +142,6 @@ public class lotto_random extends JFrame {
 			}
 
 			textArea.append(message + "\n");
-			textArea.setColumns(6);
 			textArea.setCaretPosition(textArea.getDocument().getLength());
 		}
 
