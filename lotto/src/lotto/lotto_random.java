@@ -42,7 +42,7 @@ public class lotto_random extends JFrame {
 
 	public void makeElements() throws IOException {
 
-		BufferedImage btimg = ImageIO.read(new File("C:/Users/admin/git/java-/lotto/icon.png"));
+		BufferedImage btimg = ImageIO.read(new File("img/icon.png"));
 		Image afimg = btimg.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
 		JPanel northPanel = new JPanel();
 		JPanel southPanel = new JPanel();
@@ -140,8 +140,7 @@ public class lotto_random extends JFrame {
 				buttons[j].setText(lottoNum.get(j));
 				message += lottoNum.get(j) + "       ";
 			}
-//			textpane에서 append역할하는 매서드는?
-//			없으면 textarea에서 중앙정렬 or 자동정렬 하는 매서드는?
+
 			textArea.append(message + "\n");
 			textArea.setColumns(6);
 			textArea.setCaretPosition(textArea.getDocument().getLength());
