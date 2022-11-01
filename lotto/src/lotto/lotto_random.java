@@ -164,12 +164,12 @@ public class lotto_random extends JFrame {
 					element = String.valueOf(choose);
 				}
 				
-				Collections.sort(lottoNum); 
+				
 				if(!lottoNum.contains(element)) {
 				lottoNum.add(element);
 				i++;
 				}
-
+				Collections.sort(lottoNum); 
 		    } 
 
 			String message = "";
