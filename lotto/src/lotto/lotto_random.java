@@ -34,7 +34,7 @@ public class lotto_random extends JFrame {
 		//x표 눌러서 작동 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(400, 300);
-		setLayout(new BorderLayout(0, 5));
+		setLayout(new BorderLayout(0, 0));
 //		System.out.println("1test");
 		makeElements();
 		setVisible(true);
