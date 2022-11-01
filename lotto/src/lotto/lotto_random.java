@@ -116,41 +116,6 @@ public class lotto_random extends JFrame {
 
 		public void actionPerformed(ActionEvent e) {
 			
-			
-// 		HashSet<Integer> set = new HashSet<Integer>();
-			
-// 			int lottoNum = 0;
-// 			int bonusNum = 0;
-// 			ArrayList<Integer> list = new ArrayList<Integer>(set);
-
-// 			String element;
-// 			while(set.size() != 6) {
-// 				lottoNum = (int)(Math.random() * 45) + 1;
-// 				set.add(lottoNum);
-				
-// 				if (lottoNum < 10) {
-// 				element = "0" + String.valueOf(lottoNum);
-// 			} else {
-// 				element = String.valueOf(lottoNum);
-// 			}
-// 			}
-			
-// 			while(true) {
-// 				bonusNum = (int)(Math.random() * 45) + 1;
-// 				if (bonusNum < 10) {
-// 				element = "0" + String.valueOf(bonusNum);
-// 			} else {
-// 				element = String.valueOf(bonusNum);
-// 			}
-// 				if(!set.contains(bonusNum)) {
-// 					break;
-// 				}
-// 			}			
-// 			Collections.sort(list);
-// 			list.add(lottoNum);
-// 			list.add(bonusNum);
-			
-			
 			HashSet<String> set = new HashSet<String>();
 			ArrayList<String> lottoNum = new ArrayList<String>(set);
 
