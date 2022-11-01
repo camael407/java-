@@ -116,6 +116,206 @@ public class lotto_random extends JFrame {
 
 		public void actionPerformed(ActionEvent e) {
 			
+			package lotto;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+public class lotto_random extends JFrame {
+
+	/**
+	* 
+	*/
+	private static final long serialVersionUID = 7460776130748644032L;
+
+	lotto_random() throws IOException {
+
+		setTitle("로또번호 랜덤 추출기 v.0.0.1");
+		//x표 눌러서 작동 
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(400, 300);
+		setLayout(new BorderLayout(0, 0));
+//		System.out.println("1test");
+		makeElements();
+		setVisible(true);
+	
+	}
+
+	public void makeElements() throws IOException {
+
+		BufferedImage btimg = ImageIO.read(new File("img/img.png"));
+		Image afimg = btimg.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+		JPanel northPanel = new JPanel();
+		JPanel southPanel = new JPanel();
+		
+
+		JTextArea text = new JTextArea();
+		JScrollPane textPanel = new JScrollPane(text);
+		JLabel[] numbutBtn = new JLabel[6];
+		JPanel numPane = new JPanel();
+		numPane.setLayout(new GridLayout(1, 6, 10, 0));
+
+		
+		
+		for (int i = 0; i < numbutBtn.length; i++) {
+			numbutBtn[i] = new JLabel(new ImageIcon(afimg));
+			numPane.add(numbutBtn[i]);
+			numbutBtn[i].setFocusable(false);
+			numbutBtn[i].setOpaque(false);
+			numbutBtn[i].setHorizontalTextPosition(JLabel.CENTER);
+		}
+		JButton btn = new JButton("로또 번호 생성하기");
+		btn.setFocusable(false);
+		btn.setOpaque(false);
+		btn.addActionListener(new Lottoset(numbutBtn, text));
+		northPanel.add(numPane);
+		southPanel.add(btn);
+		
+		JButton clnbtn= new JButton("CLEAR");
+		clnbtn.setFocusable(false);
+		clnbtn.setOpaque(false);
+		clnbtn.addActionListener(new reset(numbutBtn, text));
+		southPanel.add(clnbtn);
+
+		add(textPanel, BorderLayout.CENTER);
+		add(northPanel, BorderLayout.NORTH);
+		add(southPanel, BorderLayout.SOUTH);
+		
+		
+
+	}
+	
+	class reset implements ActionListener { 
+		JLabel[] clnbtn;
+		JTextArea clnfld;
+		public reset(JLabel[] clnbtn, JTextArea clnfld) {
+			this.clnbtn = clnbtn;
+			this.clnfld = clnfld;
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			for(int i = 0; i< 6; i++) {
+				clnbtn[i].setText("");
+			}
+			
+			clnfld.setText("");
+
+		}
+	}
+
+	class Lottoset implements ActionListener {
+		JLabel[] buttons;
+		JTextArea textArea;
+
+		public Lottoset(JLabel[] buttons, JTextArea textArea) {
+			this.buttons = buttons;
+			this.textArea = textArea;
+		}
+
+
+
+		public void actionPerformed(ActionEvent e) {
+			
+			
+// 		HashSet<Integer> set = new HashSet<Integer>();
+			
+// 			int lottoNum = 0;
+// 			int bonusNum = 0;
+// 			ArrayList<Integer> list = new ArrayList<Integer>(set);
+
+// 			String element;
+// 			while(set.size() != 6) {
+// 				lottoNum = (int)(Math.random() * 45) + 1;
+// 				set.add(lottoNum);
+				
+// 				if (lottoNum < 10) {
+// 				element = "0" + String.valueOf(lottoNum);
+// 			} else {
+// 				element = String.valueOf(lottoNum);
+// 			}
+// 			}
+			
+// 			while(true) {
+// 				bonusNum = (int)(Math.random() * 45) + 1;
+// 				if (bonusNum < 10) {
+// 				element = "0" + String.valueOf(bonusNum);
+// 			} else {
+// 				element = String.valueOf(bonusNum);
+// 			}
+// 				if(!set.contains(bonusNum)) {
+// 					break;
+// 				}
+// 			}			
+// 			Collections.sort(list);
+// 			list.add(lottoNum);
+// 			list.add(bonusNum);
+			
+			
+			HashSet<String> set = new HashSet<String>();
+			ArrayList<String> lottoNum = new ArrayList<String>(set);
+
+			int i = 0;
+			while (i < 6) {
+				Integer choose = (int) (Math.random() * 45 + 1);
+				String element;
+				if (choose < 10) {
+					element = "0" + String.valueOf(choose);
+				} else {
+					element = String.valueOf(choose);
+				}
+				
+				
+				if(!lottoNum.contains(element)) {
+				lottoNum.add(element);
+				i++;
+				}
+				Collections.sort(lottoNum); 
+		    } 
+
+			String message = "";
+
+			for (int j = 0; j < buttons.length; j++) {
+				buttons[j].setText(lottoNum.get(j));
+				message += lottoNum.get(j) + "       ";
+			}
+
+			textArea.append(message + "\n");
+			//맨 아래로 스크롤 따라가기
+			textArea.setCaretPosition(textArea.getDocument().getLength());
+		}
+
+	}
+
+	public static void main(String[] args) throws IOException {
+		// 창위에 최소화 최대화 옵션표시
+		JFrame.setDefaultLookAndFeelDecorated(true);
+		new lotto_random();
+
+	}
+
+
+
+}
+
+			
 			HashSet<String> set = new HashSet<String>();
 			ArrayList<String> lottoNum = new ArrayList<String>(set);
 
