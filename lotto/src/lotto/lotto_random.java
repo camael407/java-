@@ -127,7 +127,8 @@ public class lotto_random extends JFrame {
 				} else {
 					element = String.valueOf(choose);
 				}
-				Collections.sort(lottoNum);
+				
+				Collections.sort(lottoNum); 
 				if(!lottoNum.contains(element)) {
 				lottoNum.add(element);
 				i++;
