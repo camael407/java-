@@ -6,7 +6,9 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,11 +17,17 @@ import java.util.HashSet;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.filechooser.FileFilter;
 
 public class lotto_random extends JFrame {
 
@@ -40,22 +48,36 @@ public class lotto_random extends JFrame {
 		setVisible(true);
 	
 	}
+	
+	
 
 	public void makeElements() throws IOException {
 
-		BufferedImage btimg = ImageIO.read(new File("img/img.png"));
+		BufferedImage btimg = ImageIO.read(new File("./img.png"));
 		Image afimg = btimg.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
 		JPanel northPanel = new JPanel();
 		JPanel southPanel = new JPanel();
 		
-
 		JTextArea text = new JTextArea();
 		JScrollPane textPanel = new JScrollPane(text);
 		JLabel[] numbutBtn = new JLabel[6];
 		JPanel numPane = new JPanel();
 		numPane.setLayout(new GridLayout(1, 6, 10, 0));
-
 		
+		JMenuBar menuBar = new JMenuBar();	
+		JMenuItem [] menuItem = new JMenuItem [2];
+		String[] itemTitle = {
+				"Save","Exit"};
+		JMenu fileMenu = new JMenu("File");
+		MenuActionListener listener = new MenuActionListener(); 
+		for(int i=0; i<menuItem.length; i++) {
+			menuItem[i] = new JMenuItem(itemTitle[i]); 
+			menuItem[i].addActionListener(listener); 
+			fileMenu.add(menuItem[i]);
+		}
+		
+		menuBar.add(fileMenu); 
+		setJMenuBar(menuBar);
 		
 		for (int i = 0; i < numbutBtn.length; i++) {
 			numbutBtn[i] = new JLabel(new ImageIcon(afimg));
@@ -82,8 +104,30 @@ public class lotto_random extends JFrame {
 		add(southPanel, BorderLayout.SOUTH);
 		
 		
-
 	}
+	
+	class MenuActionListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			String cmd = e.getActionCommand();
+			switch(cmd) {
+			case "Exit" : 
+				 // JOptionPane.showConfirmDialog( null, "출력메세지", "타이틀", "버튼종료");
+			     int result = JOptionPane.showConfirmDialog(null, "끝내시겠습니까?", "종료", JOptionPane.YES_NO_OPTION);
+			     if(result==JOptionPane.CANCEL_OPTION) {
+			      // [X] 버튼 누른 경우
+			      break;
+			     }
+			     else if(result==JOptionPane.YES_OPTION) {
+			      System.exit(0); // 예 버튼 누른 경우
+			      break;
+			     }
+			     else {
+			      break; // 아니오 버튼 누른 경우
+			     }
+			}
+	}
+	}
+		
 	
 	class reset implements ActionListener { 
 		JLabel[] clnbtn;
@@ -148,7 +192,7 @@ public class lotto_random extends JFrame {
 			//맨 아래로 스크롤 따라가기
 			textArea.setCaretPosition(textArea.getDocument().getLength());
 		}
-
+ 
 	}
 
 	public static void main(String[] args) throws IOException {
