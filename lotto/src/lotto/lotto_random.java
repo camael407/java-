@@ -135,7 +135,7 @@ public class lotto_random extends JFrame {
 
 		    } 
 
-			String message = "                                  ";
+			String message = "";
 
 			for (int j = 0; j < buttons.length; j++) {
 				buttons[j].setText(lottoNum.get(j));
