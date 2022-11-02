@@ -1,1 +1,1 @@
-java -jar ./Lottof3.jar
+start javaw -jar ./Lottof3.jar
